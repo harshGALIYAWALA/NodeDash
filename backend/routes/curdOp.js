@@ -37,8 +37,29 @@ router.put("/task/:id", async (req, res) => {
             req.params.id,
             { ...req.body, updatedAt: Date.now()}, // Update fields and timestamp
             { new: true, runValidators: true} // Return the updated document
-        )
-   } catch {
+        );
 
-   }
+        if(!updatedTask) {
+            return res.status(400).json({Error: "task did not updated"});
+        }
+        res.status(200).json(updatedTask);
+   } catch(Error) {
+    res.status(400).json({message: "not updating task " + Error});
+}
 });
+
+
+// deleting task (delete)
+router.delete("/task/:id", async (req, res) => {
+    try {
+        const deleteTask = await taskModel.findByIdAndDelete(req.params.id);
+        if(!deleteTask) {
+            return res.status(400).json({Error: "task did not delete"});
+        }
+        res.status(200).json({ message: "Task deleted successfully" });
+    } catch(Error) {
+        res.status(400).json({message: "not deleting task " + Error});
+    }
+});
+
+module.exports = router;
