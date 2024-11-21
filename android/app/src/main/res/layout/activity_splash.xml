@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/yello"
+    tools:context=".splash_activity">
+
+    <ImageButton
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="230dp"
+        android:src="@drawable/note_logo"
+        android:scaleType="centerCrop"
+        android:background="@null"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Node Dash"
+        android:gravity="center"
+        android:layout_marginTop="90dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:fontFamily="@font/lobster_regular"
+        android:textSize="44sp"/>
+
+
+</LinearLayout>
