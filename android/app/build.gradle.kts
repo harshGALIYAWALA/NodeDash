@@ -45,4 +45,6 @@ dependencies {
     implementation ("com.squareup.okhttp3:okhttp:4.11.0") // OkHttp supports HTTP2 (handle client-server: req and res)
 
     implementation ("com.google.android.material:material:1.4.0")
+
+    implementation ("com.github.mancj:MaterialSearchBar:0.8.5") // search bar
 }
