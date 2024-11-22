@@ -40,4 +40,9 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+
+    implementation ("com.google.code.gson:gson:2.10") // java object to json converter and wise versa
+    implementation ("com.squareup.okhttp3:okhttp:4.11.0") // OkHttp supports HTTP2 (handle client-server: req and res)
+
+    implementation ("com.google.android.material:material:1.4.0")
 }

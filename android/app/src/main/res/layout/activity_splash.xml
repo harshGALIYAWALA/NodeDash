@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/yello"
-    tools:context=".splash_activity">
+    tools:context=".activities.splash_activity">
 
     <ImageButton
         android:layout_width="170dp"
