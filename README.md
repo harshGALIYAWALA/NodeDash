@@ -11,7 +11,7 @@ Node Dash is a collaborative note-taking app that allows users to create, edit, 
 - **Collaborative Notes**: Work together with your team on shared notes in real-time.  
 - **Real-Time Syncing**: Instant updates across devices for seamless collaboration.  
 - **User Authentication**: Secure and personalized access to your notes.  
-- **Cross-Platform**: Works across multiple devices, ensuring you never lose track of your notes.  
+- **Offline Access**: Work on your notes even without an internet connection; changes sync automatically when you're back online.
 
 ---
 
