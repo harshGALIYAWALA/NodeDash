@@ -3,12 +3,19 @@ package com.example.myapplication.activities.fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.myapplication.R;
+import com.example.myapplication.activities.adapters.UserAdapter;
+
+import java.util.ArrayList;
+
+import models.Users;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +23,9 @@ import com.example.myapplication.R;
  * create an instance of this fragment.
  */
 public class notes_fragment extends Fragment {
+
+    RecyclerView recyclerView;
+    ArrayList<Users> usersArrayList;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -61,6 +71,51 @@ public class notes_fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_notes_fragment, container, false);
+        View view = inflater.inflate(R.layout.fragment_notes_fragment, container, false);
+
+        recyclerView = view.findViewById(R.id.recyclerView);
+
+        usersArrayList = new ArrayList<>();
+
+        // set-up recycler View
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        usersArrayList.add(new Users("hitesh", "111"));
+        usersArrayList.add(new Users("harsh", "222"));
+        usersArrayList.add(new Users("rishav", "333"));
+        usersArrayList.add(new Users("sahil", "444"));
+        usersArrayList.add(new Users("patel", "555"));
+        usersArrayList.add(new Users("shiv", "666"));
+        usersArrayList.add(new Users("dhruv", "777"));
+        usersArrayList.add(new Users("shivam", "888"));
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        usersArrayList.add(new Users("hitesh", "111"));
+        usersArrayList.add(new Users("harsh", "222"));
+        usersArrayList.add(new Users("rishav", "333"));
+        usersArrayList.add(new Users("sahil", "444"));
+        usersArrayList.add(new Users("patel", "555"));
+        usersArrayList.add(new Users("shiv", "666"));
+        usersArrayList.add(new Users("dhruv", "777"));
+        usersArrayList.add(new Users("shivam", "888"));
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        usersArrayList.add(new Users("hitesh", "111"));
+        usersArrayList.add(new Users("harsh", "222"));
+        usersArrayList.add(new Users("rishav", "333"));
+        usersArrayList.add(new Users("sahil", "444"));
+        usersArrayList.add(new Users("patel", "555"));
+        usersArrayList.add(new Users("shiv", "666"));
+        usersArrayList.add(new Users("dhruv", "777"));
+        usersArrayList.add(new Users("shivam", "888"));
+
+        usersArrayList.add(new Users(" ", " "));
+        usersArrayList.add(new Users(" ", " "));
+
+
+        UserAdapter adapter = new UserAdapter(getContext(), usersArrayList);
+        recyclerView.setAdapter(adapter);
+
+
+        return view;
     }
 }

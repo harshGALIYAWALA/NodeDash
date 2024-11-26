@@ -17,6 +17,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.myapplication.R;
 import com.example.myapplication.activities.fragments.notes_fragment;
 import com.example.myapplication.activities.fragments.todo_fragment;
+import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mancj.materialsearchbar.MaterialSearchBar;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     BottomNavigationView btnNavView;
     FrameLayout frame_layout;
+    BottomAppBar bottomAppBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
 
         btnNavView = findViewById(R.id.btnNavView);
         frame_layout = findViewById(R.id.frame_layout);
+        bottomAppBar = findViewById(R.id.bottomAppBar);
+
 
         // bottomNavView
         btnNavView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
