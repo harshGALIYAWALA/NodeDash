@@ -30,6 +30,6 @@ Node Dash is a collaborative note-taking app that allows users to create, edit, 
 - Authentication setup: In progress  
 - Real-time syncing: In development  
 - Collaborative editing: Planned for future updates  
-- Android UI and logic: In progress    
+- Android UI and logic: In development 
  
 ---
