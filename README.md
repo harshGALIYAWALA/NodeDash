@@ -1,6 +1,6 @@
 # Node Dash
 
-Node Dash is a collaborative note-taking app that allows users to create, edit, and share notes in real-time. Unlike traditional note-taking apps, Node Dash focuses on enabling seamless collaboration with features like real-time syncing, user authentication, and collaborative editing.  
+Node Dash is a collaborative note-taking app designed to enable real-time collaboration and seamless syncing across devices. It offers an intuitive interface for creating, editing, and sharing notes. The app's backend is built from scratch, providing a custom solution for handling real-time syncing and user authentication. 
 
 > ⚠ **This project is a work in progress.** Contributions and feedback are welcome!  
 
@@ -11,7 +11,7 @@ Node Dash is a collaborative note-taking app that allows users to create, edit, 
 - **Collaborative Notes**: Work together with your team on shared notes in real-time.  
 - **Real-Time Syncing**: Instant updates across devices for seamless collaboration.  
 - **User Authentication**: Secure and personalized access to your notes.  
-- **Cross-Platform**: Works across multiple devices, ensuring you never lose track of your notes.  
+- **Offline Access**: Work on your notes even without an internet connection; changes sync automatically when you're back online.
 
 ---
 
@@ -30,6 +30,6 @@ Node Dash is a collaborative note-taking app that allows users to create, edit, 
 - Authentication setup: In progress  
 - Real-time syncing: In development  
 - Collaborative editing: Planned for future updates  
-- Android UI and logic: In progress    
+- Android UI and logic: In development 
  
 ---
