@@ -1,4 +1,4 @@
-package com.example.myapplication.activities.adapters;
+package com.example.NodeDash.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,9 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.R;
-
-import org.w3c.dom.Text;
+import com.example.NodeDash.R;
 
 import java.util.ArrayList;
 

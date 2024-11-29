@@ -1,4 +1,4 @@
-package com.example.myapplication.activities.activities;
+package com.example.NodeDash;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,7 +10,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.example.myapplication.R;
+import com.example.NodeDash.R;
 
 public class splash_activity extends AppCompatActivity {
 

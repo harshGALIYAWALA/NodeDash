@@ -1,4 +1,4 @@
-package com.example.myapplication.activities.APIs;
+package com.example.NodeDash.APIs;
 
 public interface ApiResponseCallback {
     void onSuccess(Object response);

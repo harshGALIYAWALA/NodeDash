@@ -1,4 +1,4 @@
-package com.example.myapplication.activities.activities;
+package com.example.NodeDash;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -14,15 +14,13 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.myapplication.R;
-import com.example.myapplication.activities.fragments.notes_fragment;
-import com.example.myapplication.activities.fragments.todo_fragment;
+import com.example.NodeDash.R;
+import com.example.NodeDash.fragments.notes_fragment;
+import com.example.NodeDash.fragments.todo_fragment;
 import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.mancj.materialsearchbar.MaterialSearchBar;
 
-public class MainActivity extends AppCompatActivity {
+public class  MainActivity extends AppCompatActivity {
 
     BottomNavigationView btnNavView;
     FrameLayout frame_layout;
