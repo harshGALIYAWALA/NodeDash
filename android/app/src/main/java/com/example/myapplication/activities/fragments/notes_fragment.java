@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.myapplication.R;
-import com.example.myapplication.activities.adapters.UserAdapter;
 
 import java.util.ArrayList;
 
@@ -73,47 +72,6 @@ public class notes_fragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_notes_fragment, container, false);
 
-        recyclerView = view.findViewById(R.id.recyclerView);
-
-        usersArrayList = new ArrayList<>();
-
-        // set-up recycler View
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        usersArrayList.add(new Users("hitesh", "111"));
-        usersArrayList.add(new Users("harsh", "222"));
-        usersArrayList.add(new Users("rishav", "333"));
-        usersArrayList.add(new Users("sahil", "444"));
-        usersArrayList.add(new Users("patel", "555"));
-        usersArrayList.add(new Users("shiv", "666"));
-        usersArrayList.add(new Users("dhruv", "777"));
-        usersArrayList.add(new Users("shivam", "888"));
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        usersArrayList.add(new Users("hitesh", "111"));
-        usersArrayList.add(new Users("harsh", "222"));
-        usersArrayList.add(new Users("rishav", "333"));
-        usersArrayList.add(new Users("sahil", "444"));
-        usersArrayList.add(new Users("patel", "555"));
-        usersArrayList.add(new Users("shiv", "666"));
-        usersArrayList.add(new Users("dhruv", "777"));
-        usersArrayList.add(new Users("shivam", "888"));
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        usersArrayList.add(new Users("hitesh", "111"));
-        usersArrayList.add(new Users("harsh", "222"));
-        usersArrayList.add(new Users("rishav", "333"));
-        usersArrayList.add(new Users("sahil", "444"));
-        usersArrayList.add(new Users("patel", "555"));
-        usersArrayList.add(new Users("shiv", "666"));
-        usersArrayList.add(new Users("dhruv", "777"));
-        usersArrayList.add(new Users("shivam", "888"));
-
-        usersArrayList.add(new Users(" ", " "));
-        usersArrayList.add(new Users(" ", " "));
-
-
-        UserAdapter adapter = new UserAdapter(getContext(), usersArrayList);
-        recyclerView.setAdapter(adapter);
 
 
         return view;
