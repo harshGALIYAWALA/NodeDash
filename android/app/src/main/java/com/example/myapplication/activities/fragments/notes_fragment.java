@@ -3,6 +3,7 @@ package com.example.myapplication.activities.fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -11,10 +12,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.myapplication.R;
+import com.example.myapplication.activities.adapters.TaskAdapter;
 
 import java.util.ArrayList;
 
-import models.Users;
+import models.TaskModel;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,8 +25,11 @@ import models.Users;
  */
 public class notes_fragment extends Fragment {
 
-    RecyclerView recyclerView;
-    ArrayList<Users> usersArrayList;
+        RecyclerView recyclerView;
+        ArrayList<TaskModel> taskModels = new ArrayList<>();
+        TaskAdapter adapter;
+
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -72,7 +77,34 @@ public class notes_fragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_notes_fragment, container, false);
 
+        recyclerView = view.findViewById(R.id.recyclerView);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
+        recyclerView.setLayoutManager(gridLayoutManager);
 
+        taskModels.add(new TaskModel("Task 1", "Description for Task 1", "Pending", "2024-12-01", "Low"));
+        taskModels.add(new TaskModel("Task 2", "Description for Task 2", "In Progress", "2024-12-02", "High"));
+        taskModels.add(new TaskModel("Task 3", "Description for Task 3", "Completed", "2024-12-03", "Medium"));
+
+        taskModels.add(new TaskModel("Task 1", "Description for Task 1", "Pending", "2024-12-01", "Low"));
+        taskModels.add(new TaskModel("Task 2", "Description for Task 2", "In Progress", "2024-12-02", "High"));
+        taskModels.add(new TaskModel("Task 3", "Description for Task 3", "Completed", "2024-12-03", "Medium"));
+
+        taskModels.add(new TaskModel("Task 1", "Description for Task 1", "Pending", "2024-12-01", "Low"));
+        taskModels.add(new TaskModel("Task 2", "Description for Task 2", "In Progress", "2024-12-02", "High"));
+        taskModels.add(new TaskModel("Task 3", "Description for Task 3", "Completed", "2024-12-03", "Medium"));
+
+        taskModels.add(new TaskModel("Task 1", "Description for Task 1", "Pending", "2024-12-01", "Low"));
+        taskModels.add(new TaskModel("Task 2", "Description for Task 2", "In Progress", "2024-12-02", "High"));
+        taskModels.add(new TaskModel("Task 3", "Description for Task 3", "Completed", "2024-12-03", "Medium"));
+
+        taskModels.add(new TaskModel("Task 1", "Description for Task 1", "Pending", "2024-12-01", "Low"));
+        taskModels.add(new TaskModel("Task 2", "Description for Task 2", "In Progress", "2024-12-02", "High"));
+        taskModels.add(new TaskModel("Task 3", "Description for Task 3", "Completed", "2024-12-03", "Medium"));
+
+
+
+        adapter = new TaskAdapter(getContext(), taskModels);
+        recyclerView.setAdapter(adapter);
 
         return view;
     }
