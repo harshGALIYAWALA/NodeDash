@@ -1,8 +1,7 @@
-package com.example.NodeDash;
+package com.example.NodeDash.screens;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,22 +10,26 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.NodeDash.R;
+import com.example.NodeDash.fragments.NoteDetailFragment;
 
-public class splash_activity extends AppCompatActivity {
+public class OpenNoteActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_splash);
+        setContentView(R.layout.activity_open_note);
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                startActivity(new Intent(splash_activity.this, MainActivity.class));
-                finish();
-            }
-        }, 2000);
+        // Get data from Intent
+        Intent intent = getIntent();
+        String title = intent.getStringExtra("title");
+        String description = intent.getStringExtra("description");
+
+        // Load NoteDetailFragment with the passed data
+        NoteDetailFragment fragment = NoteDetailFragment.newInstance(title, description);
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.openNoteFrame_container, fragment)
+                .commit();
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());

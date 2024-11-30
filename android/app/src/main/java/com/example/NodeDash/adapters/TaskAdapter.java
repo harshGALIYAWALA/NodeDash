@@ -7,22 +7,29 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.NodeDash.R;
 
 import java.util.ArrayList;
 
-import models.TaskModel;
+import com.example.NodeDash.models.TaskModel;
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder> {
 
     Context context;
     ArrayList<TaskModel> arrayTaskModel;
+    OnItemClickListener listener;
 
-    public TaskAdapter(Context context, ArrayList<TaskModel> arrayTaskModel) {
+    public interface OnItemClickListener {
+        void onItemClick(TaskModel taskModel);
+    }
+
+    public TaskAdapter(Context context, ArrayList<TaskModel> arrayTaskModel, OnItemClickListener listener) {
         this.context = context;
         this.arrayTaskModel = arrayTaskModel;
+        this.listener = listener;
     }
 
 
@@ -41,6 +48,15 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         holder.status.setText(taskModel.getStatus());
         holder.priority.setText(taskModel.getPriority());
         holder.dueDate.setText(taskModel.getDueDate());
+
+        // Handle card click
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onItemClick(taskModel);
+            }
+        });
+
     }
 
     @Override
@@ -51,6 +67,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
     public class TaskViewHolder extends RecyclerView.ViewHolder{
 
         TextView title, description, status, priority, dueDate;
+        CardView cardView;
 
         public TaskViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -59,6 +76,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
             status = itemView.findViewById(R.id.task_status);
             priority = itemView.findViewById(R.id.task_priority);
             dueDate = itemView.findViewById(R.id.task_dueDate);
+            cardView = itemView.findViewById(R.id.cardView);
         }
     }
 

@@ -1,4 +1,4 @@
-package com.example.NodeDash;
+package com.example.NodeDash.screens;
 
 import android.os.Bundle;
 import android.view.MenuItem;

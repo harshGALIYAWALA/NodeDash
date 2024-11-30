@@ -1,5 +1,6 @@
 package com.example.NodeDash.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -15,7 +16,8 @@ import com.example.NodeDash.adapters.TaskAdapter;
 
 import java.util.ArrayList;
 
-import models.TaskModel;
+import com.example.NodeDash.models.TaskModel;
+import com.example.NodeDash.screens.OpenNoteActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -82,27 +84,22 @@ public class notes_fragment extends Fragment {
 
         taskModels.add(new TaskModel("Task 1", "Description for Task 1", "Pending", "2024-12-01", "Low"));
         taskModels.add(new TaskModel("Task 2", "Description for Task 2", "In Progress", "2024-12-02", "High"));
-        taskModels.add(new TaskModel("Task 3", "Description for Task 3", "Completed", "2024-12-03", "Medium"));
-
-        taskModels.add(new TaskModel("Task 1", "Description for Task 1", "Pending", "2024-12-01", "Low"));
-        taskModels.add(new TaskModel("Task 2", "Description for Task 2", "In Progress", "2024-12-02", "High"));
-        taskModels.add(new TaskModel("Task 3", "Description for Task 3", "Completed", "2024-12-03", "Medium"));
-
-        taskModels.add(new TaskModel("Task 1", "Description for Task 1", "Pending", "2024-12-01", "Low"));
-        taskModels.add(new TaskModel("Task 2", "Description for Task 2", "In Progress", "2024-12-02", "High"));
-        taskModels.add(new TaskModel("Task 3", "Description for Task 3", "Completed", "2024-12-03", "Medium"));
-
-        taskModels.add(new TaskModel("Task 1", "Description for Task 1", "Pending", "2024-12-01", "Low"));
-        taskModels.add(new TaskModel("Task 2", "Description for Task 2", "In Progress", "2024-12-02", "High"));
-        taskModels.add(new TaskModel("Task 3", "Description for Task 3", "Completed", "2024-12-03", "Medium"));
-
-        taskModels.add(new TaskModel("Task 1", "Description for Task 1", "Pending", "2024-12-01", "Low"));
-        taskModels.add(new TaskModel("Task 2", "Description for Task 2", "In Progress", "2024-12-02", "High"));
-        taskModels.add(new TaskModel("Task 3", "Description for Task 3", "Completed", "2024-12-03", "Medium"));
+        
 
 
 
-        adapter = new TaskAdapter(getContext(), taskModels);
+        // Initialize adapter with click listener
+        adapter = new TaskAdapter(getContext(), taskModels, new TaskAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(TaskModel taskModel) {
+                // Open open_note_activity with the clicked item's details
+                Intent intent = new Intent(getContext(), OpenNoteActivity.class);
+                intent.putExtra("title", taskModel.getTitle());
+                intent.putExtra("description", taskModel.getDescription());
+                startActivity(intent);
+            }
+        });
+
         recyclerView.setAdapter(adapter);
 
         return view;

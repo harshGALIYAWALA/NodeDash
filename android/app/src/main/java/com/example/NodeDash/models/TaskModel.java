@@ -1,4 +1,4 @@
-package models;
+package com.example.NodeDash.models;
 
 import java.util.Date;
 
