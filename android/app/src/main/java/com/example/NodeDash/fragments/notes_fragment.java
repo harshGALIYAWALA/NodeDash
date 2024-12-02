@@ -103,6 +103,5 @@ public class notes_fragment extends Fragment {
         recyclerView.setAdapter(adapter);
 
         return view;
-        
     }
 }
