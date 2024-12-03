@@ -96,6 +96,9 @@ public class notes_fragment extends Fragment {
                 Intent intent = new Intent(getContext(), OpenNoteActivity.class);
                 intent.putExtra("title", taskModel.getTitle());
                 intent.putExtra("description", taskModel.getDescription());
+                intent.putExtra("status", taskModel.getStatus());
+                intent.putExtra("dueDate", taskModel.getDueDate());
+                intent.putExtra("priority", taskModel.getPriority());
                 startActivity(intent);
             }
         });

@@ -24,9 +24,15 @@ public class OpenNoteActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String title = intent.getStringExtra("title");
         String description = intent.getStringExtra("description");
+        String status = intent.getStringExtra("status");
+        String dueDate = intent.getStringExtra("dueDate");
+        String priority = intent.getStringExtra("priority");
+
+
+
 
         // Load NoteDetailFragment with the passed data
-        NoteDetailFragment fragment = NoteDetailFragment.newInstance(title, description);
+        NoteDetailFragment fragment = NoteDetailFragment.newInstance(title, description, status, dueDate, priority);
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.openNoteFrame_container, fragment)
                 .commit();
