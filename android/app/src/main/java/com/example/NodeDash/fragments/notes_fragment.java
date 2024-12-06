@@ -84,6 +84,12 @@ public class notes_fragment extends Fragment {
 
         taskModels.add(new TaskModel("Task 1", "Description for Task 1", "Pending", "2024-12-01", "Low"));
         taskModels.add(new TaskModel("Task 2", "Description for Task 2", "In Progress", "2024-12-02", "High"));
+
+        taskModels.add(new TaskModel("Task 1", "Description for Task 1", "Pending", "2024-12-01", "Low"));
+        taskModels.add(new TaskModel("Task 2", "Description for Task 2", "In Progress", "2024-12-02", "High"));
+
+        taskModels.add(new TaskModel("Task 1", "Description for Task 1", "Pending", "2024-12-01", "Low"));
+        taskModels.add(new TaskModel("Task 2", "Description for Task 2", "In Progress", "2024-12-02", "High"));
         
 
 

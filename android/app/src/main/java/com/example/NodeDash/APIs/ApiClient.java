@@ -1,12 +1,20 @@
 package com.example.NodeDash.APIs;
 
+import android.util.Log;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 
 import com.google.gson.Gson;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.example.NodeDash.models.TaskModel;
+import com.google.gson.reflect.TypeToken;
+
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
@@ -15,7 +23,7 @@ import okhttp3.Response;
 
 public class ApiClient {
 
-    private static final String BASE_URL = "http://10.0.2.2:5000/api/task";
+    private static final String BASE_URL = "http://10.0.2.2:5000/api/";
 
     private OkHttpClient client;
     private Gson gson;
@@ -39,12 +47,7 @@ public class ApiClient {
 
             @Override
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-                if(response.isSuccessful()){
-                    TaskModel[] tasks = gson.fromJson(response.body().string(), TaskModel[].class);
-                }
-                else {
-                    callback.onError(response.message());
-                }
+
             }
         });
     }
@@ -66,6 +69,7 @@ public class ApiClient {
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
                 if(response.isSuccessful()){
                     TaskModel createdTask = gson.fromJson(response.body().string(), TaskModel.class);
+                    callback.onSuccess(createdTask);
                 } else {
                     callback.onError(response.message());
                 }

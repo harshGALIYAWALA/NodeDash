@@ -1,7 +1,9 @@
 package com.example.NodeDash.screens;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.FrameLayout;
 
 import androidx.activity.EdgeToEdge;
@@ -15,16 +17,19 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.NodeDash.R;
+import com.example.NodeDash.fragments.NoteDetailFragment;
 import com.example.NodeDash.fragments.notes_fragment;
 import com.example.NodeDash.fragments.todo_fragment;
 import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class  MainActivity extends AppCompatActivity {
 
     BottomNavigationView btnNavView;
     FrameLayout frame_layout;
     BottomAppBar bottomAppBar;
+    FloatingActionButton floatingActionBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +40,7 @@ public class  MainActivity extends AppCompatActivity {
         btnNavView = findViewById(R.id.btnNavView);
         frame_layout = findViewById(R.id.frame_layout);
         bottomAppBar = findViewById(R.id.bottomAppBar);
+        floatingActionBtn = findViewById(R.id.floatingActionBtn);
 
 
         // bottomNavView
@@ -55,6 +61,24 @@ public class  MainActivity extends AppCompatActivity {
         });
 
         btnNavView.setSelectedItemId(R.id.menu_note);
+
+
+        floatingActionBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, OpenNoteActivity.class);
+
+                // Pass empty fields for creating a new note
+                intent.putExtra("title", "");
+                intent.putExtra("description", "");
+                intent.putExtra("status", "pending");
+                intent.putExtra("dueDate", "");
+                intent.putExtra("priority", "low");
+
+                startActivity(intent);
+            }
+        });
+
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());

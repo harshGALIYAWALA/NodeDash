@@ -4,14 +4,20 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.NodeDash.APIs.ApiClient;
+import com.example.NodeDash.APIs.ApiResponseCallback;
 import com.example.NodeDash.R;
+import com.example.NodeDash.models.TaskModel;
 
 public class NoteDetailFragment extends Fragment {
 
@@ -66,6 +72,7 @@ public class NoteDetailFragment extends Fragment {
         TextView dateTextView = view.findViewById(R.id.dateTextView);
         TextView status_bar = view.findViewById(R.id.status_bar);
         TextView priority_bar = view.findViewById(R.id.priority_bar);
+        Button saveBtn = view.findViewById(R.id.saveBtn);
 
         //diabling below line in edittext
         titleTextView.setBackground(null);
@@ -79,12 +86,56 @@ public class NoteDetailFragment extends Fragment {
             }
         });
 
+        // Set initial values (if any)
         titleTextView.setText(title);
         descriptionTextView.setText(description);
         dateTextView.setText(date);
-        status_bar.setText(status);
-        priority_bar.setText(priority);
 
+
+        saveBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String title = titleTextView.getText().toString();
+                String description = descriptionTextView.getText().toString();
+                String date = dateTextView.getText().toString();
+                String status = status_bar.getText().toString();
+                String priority = priority_bar.getText().toString();
+
+                if(title.isEmpty()){
+                    titleTextView.setError("enter title!");
+                    return;
+                }
+
+                // Create the note using API
+                TaskModel taskModel = new TaskModel(title, description, date, status, priority);
+                new ApiClient().createTask(taskModel, new ApiResponseCallback() {
+                    @Override
+                    public void onSuccess(Object response) {
+                        // Ensure the Toast is displayed on the main thread (UI thread)
+                        if (getActivity() != null) {
+                            getActivity().runOnUiThread(() -> {
+                                Log.d("API", "Data saved successfully: " + response);
+                                Toast.makeText(getContext(), "Note Created", Toast.LENGTH_SHORT).show();
+                                // Close the activity after saving
+                                getActivity().finish();
+                            });
+                        }
+                    }
+
+                    @Override
+                    public void onError(String error) {
+                        // Ensure the Toast is displayed on the main thread (UI thread)
+                        if (getActivity() != null) {
+                            getActivity().runOnUiThread(() -> {
+                                Toast.makeText(getContext(), "Error: " + error, Toast.LENGTH_SHORT).show();
+                            });
+                        }
+                    }
+                });
+
+            }
+        });
 
         return view;
     }
