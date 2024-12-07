@@ -13,6 +13,16 @@ public class TaskModel {
     String updatedAt;
      String userId;
 
+    // Constructor with only title and description
+    public TaskModel(String title, String description) {
+        this.title = title;
+        this.description = description;
+        this.status = "pending"; // Default status
+        this.priority = "low";   // Default priority
+        this.userId = "60ff47b2c11f1b001c8c5e5d"; // Replace with your default userId
+    }
+
+
 
     // Constructor for 5 parameters (Fragment usage)
     public TaskModel(String title, String description, String status, String dueDate, String priority) {

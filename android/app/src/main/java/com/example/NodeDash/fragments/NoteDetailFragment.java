@@ -18,6 +18,7 @@ import com.example.NodeDash.APIs.ApiClient;
 import com.example.NodeDash.APIs.ApiResponseCallback;
 import com.example.NodeDash.R;
 import com.example.NodeDash.models.TaskModel;
+import com.google.gson.Gson;
 
 public class NoteDetailFragment extends Fragment {
 
@@ -107,8 +108,12 @@ public class NoteDetailFragment extends Fragment {
                     return;
                 }
 
-                // Create the note using API
-                TaskModel taskModel = new TaskModel(title, description, date, status, priority);
+                // Create the TaskModel object with default values
+                TaskModel taskModel = new TaskModel(title, description);
+
+                // Log the payload being sent to the API
+                Log.d("API", "Payload Sent: " + new Gson().toJson(taskModel));
+
                 new ApiClient().createTask(taskModel, new ApiResponseCallback() {
                     @Override
                     public void onSuccess(Object response) {
@@ -117,7 +122,8 @@ public class NoteDetailFragment extends Fragment {
                             getActivity().runOnUiThread(() -> {
                                 Log.d("API", "Data saved successfully: " + response);
                                 Toast.makeText(getContext(), "Note Created", Toast.LENGTH_SHORT).show();
-                                // Close the activity after saving
+                                // Fetch updated list of tasks
+                                
                                 getActivity().finish();
                             });
                         }
