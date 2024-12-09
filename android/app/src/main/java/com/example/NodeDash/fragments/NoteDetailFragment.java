@@ -108,37 +108,65 @@ public class NoteDetailFragment extends Fragment {
                     return;
                 }
 
-                // Create the TaskModel object with default values
-                TaskModel taskModel = new TaskModel(title, description);
+               if(getArguments() != null && getArguments().containsKey("id")){
+                   String taskId = getArguments().getString("id"); // Retrieve task ID
+                   TaskModel updatedTask = new TaskModel(title, description);
 
-                // Log the payload being sent to the API
-                Log.d("API", "Payload Sent: " + new Gson().toJson(taskModel));
+                   new ApiClient().updateTask(taskId, updatedTask, new ApiResponseCallback() {
+                       @Override
+                       public void onSuccess(Object response) {
+                           if (getActivity() != null) {
+                               getActivity().runOnUiThread(() -> {
+                                   Toast.makeText(getContext(), "Note Updated", Toast.LENGTH_SHORT).show();
+                                   getActivity().finish();
+                               });
+                           }
+                       }
 
-                new ApiClient().createTask(taskModel, new ApiResponseCallback() {
-                    @Override
-                    public void onSuccess(Object response) {
-                        // Ensure the Toast is displayed on the main thread (UI thread)
-                        if (getActivity() != null) {
-                            getActivity().runOnUiThread(() -> {
-                                Log.d("API", "Data saved successfully: " + response);
-                                Toast.makeText(getContext(), "Note Created", Toast.LENGTH_SHORT).show();
-                                // Fetch updated list of tasks
-                                
-                                getActivity().finish();
-                            });
-                        }
-                    }
+                       @Override
+                       public void onError(String error) {
+                           if (getActivity() != null) {
+                               getActivity().runOnUiThread(() -> {
+                                   Toast.makeText(getContext(), "Error updating note: " + error, Toast.LENGTH_SHORT).show();
+                               });
+                           }
+                       }
+                   });
 
-                    @Override
-                    public void onError(String error) {
-                        // Ensure the Toast is displayed on the main thread (UI thread)
-                        if (getActivity() != null) {
-                            getActivity().runOnUiThread(() -> {
-                                Toast.makeText(getContext(), "Error: " + error, Toast.LENGTH_SHORT).show();
-                            });
-                        }
-                    }
-                });
+
+               } else {
+                   // Create the TaskModel object with default values
+                   TaskModel taskModel = new TaskModel(title, description);
+
+                   // Log the payload being sent to the API
+                   Log.d("API", "Payload Sent: " + new Gson().toJson(taskModel));
+
+                   new ApiClient().createTask(taskModel, new ApiResponseCallback() {
+                       @Override
+                       public void onSuccess(Object response) {
+                           // Ensure the Toast is displayed on the main thread (UI thread)
+                           if (getActivity() != null) {
+                               getActivity().runOnUiThread(() -> {
+                                   Log.d("API", "Data saved successfully: " + response);
+                                   Toast.makeText(getContext(), "Note Created", Toast.LENGTH_SHORT).show();
+                                   // Fetch updated list of tasks
+
+                                   getActivity().finish();
+                               });
+                           }
+                       }
+
+                       @Override
+                       public void onError(String error) {
+                           // Ensure the Toast is displayed on the main thread (UI thread)
+                           if (getActivity() != null) {
+                               getActivity().runOnUiThread(() -> {
+                                   Toast.makeText(getContext(), "Error: " + error, Toast.LENGTH_SHORT).show();
+                               });
+                           }
+                       }
+                   });
+               }
 
             }
         });

@@ -1,15 +1,11 @@
 package com.example.NodeDash.APIs;
 
-import android.util.Log;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 
 import com.google.gson.Gson;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.List;
 
 import com.example.NodeDash.models.TaskModel;
@@ -88,6 +84,35 @@ public class ApiClient {
             }
         });
     }
+
+
+    public void updateTask(String taskId, TaskModel taskModel, final ApiResponseCallback callback) {
+        String json = gson.toJson(taskModel); // Convert the taskModel to JSON
+        RequestBody body = RequestBody.create(json, okhttp3.MediaType.parse("application/json; charset=utf-8"));
+
+        Request request = new Request.Builder()
+                .url(BASE_URL + "task/" + taskId) // Append task ID for update
+                .put(body) // PUT request
+                .addHeader("Content-Type", "application/json")
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                callback.onError(e.getMessage());
+            }
+
+            @Override
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    callback.onSuccess(response.body().string());
+                } else {
+                    callback.onError(response.message());
+                }
+            }
+        });
+    }
+
 
 
 

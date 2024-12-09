@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class TaskModel {
 
+    String id;
      String title;
      String description;
      String status;
@@ -22,6 +23,12 @@ public class TaskModel {
         this.userId = "60ff47b2c11f1b001c8c5e5d"; // Replace with your default userId
     }
 
+    // Constructor for updating a task with ID
+    public TaskModel(String id, String title, String description) {
+        this.id = id;               // Set the ID for the existing task
+        this.title = title;
+        this.description = description;
+    }
 
 
     // Constructor for 5 parameters (Fragment usage)
@@ -107,5 +114,13 @@ public class TaskModel {
 
     public void setUserId(String userId) {
         this.userId = userId;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

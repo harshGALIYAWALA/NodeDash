@@ -48,6 +48,7 @@ public class notes_fragment extends Fragment {
             @Override
             public void onItemClick(TaskModel taskModel) {
                 Intent intent = new Intent(getContext(), OpenNoteActivity.class);
+                intent.putExtra("id", taskModel.getUserId()); // Pass the ID of the note
                 intent.putExtra("title", taskModel.getTitle());
                 intent.putExtra("description", taskModel.getDescription());
                 intent.putExtra("status", taskModel.getStatus());
