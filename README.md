@@ -9,16 +9,8 @@ The backend is developed from scratch using Node.js and Express, with MongoDB ha
 ---
 
 ## 📸 Demo
-
-| Video Preview | Screenshots |
-|---------------|-------------|
-| 🎥 [Watch the Demo](#)  
-
+ 
 https://github.com/user-attachments/assets/e5f8aff0-9e47-4ad9-937f-a72a9e3b7fa4
-
- | ![Screenshot 1](path/to/image1.png) ![Screenshot 2](path/to/image2.png) |
-
-> *(Replace the placeholders with your actual links and image paths)*
 
 ---
 
