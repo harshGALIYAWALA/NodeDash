@@ -16,16 +16,20 @@ router.get("/task", async (req, res) => {
 
 // creating task (POST)
 router.post("/task", async (req, res) => {
+    console.log("Request Body:", req.body); // Log incoming payload
+    try {
+        const { title, description, status, dueDate, priority, userId } = req.body;
 
-    try{
-        
-        const {title, description, status, dueDate, priority, userId} = req.body;
-        const task = new taskModel({title, description, status, dueDate, priority, userId});
+        if (!title || !userId) {
+            return res.status(400).json({ error: "Title and UserId are required!" });
+        }
+
+        const task = new taskModel({ title, description, status, dueDate, priority, userId });
         const saveTask = await task.save();
-        
         res.status(201).json(saveTask);
-    } catch(Error) {
-        res.status(400).json({message: "not creating task " + Error});
+    } catch (error) {
+        console.error("Error creating task:", error);
+        res.status(500).json({ error: "Internal Server Error" });
     }
 });
 
