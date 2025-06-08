@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/main"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+android:background="@color/off_white"
+tools:context=".activities.activities.MainActivity">
+
+<com.mancj.materialsearchbar.MaterialSearchBar
+    android:id="@+id/searchBar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:mt_placeholder="search here..."
+    app:mt_speechMode="true"
+    app:mt_hint="Search here..."
+    app:mt_maxSuggestionsCount="5"
+    app:mt_textColor="#000000"
+    app:mt_navIconEnabled="true"
+    app:mt_roundedSearchBarEnabled="true"
+    android:layout_margin="8dp"
+    android:elevation="5dp" />
+
+
+<FrameLayout
+    android:id="@+id/frame_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="55dp"
+    />
+
+<com.google.android.material.bottomappbar.BottomAppBar
+    android:id="@+id/bottomAppBar"
+    android:layout_width="match_parent"
+    android:layout_height="110dp"
+    android:layout_gravity="bottom"
+    android:background="@drawable/bottom_appbar_background"
+    app:fabCradleMargin="10dp"
+    app:fabCradleRoundedCornerRadius="50dp"
+    app:elevation="5dp">
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/btnNavView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        app:elevation="0dp"
+        android:background="@android:color/transparent"
+        app:menu="@menu/bottom_menu"
+        app:itemIconTint="@color/black"
+        app:itemTextColor="@color/black"/>
+</com.google.android.material.bottomappbar.BottomAppBar>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionBtn"
+        app:layout_anchor="@id/bottomAppBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/black"
+        android:src="@drawable/add_logo"
+        app:maxImageSize="40dp"
+        android:elevation="5dp"
+        android:contentDescription="Add new item" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+
+
+
+
+
